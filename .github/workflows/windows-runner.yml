@@ -1,0 +1,19 @@
+﻿name: Windows Self-Hosted Runner - Hello
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: [self-hosted, Windows, X64]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run PowerShell script
+        shell: pwsh
+        run: |
+          ./scripts/hello.ps1
