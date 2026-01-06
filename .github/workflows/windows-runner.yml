@@ -13,7 +13,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Debug - show workspace and files
+        shell: powershell
+        run: |
+          Write-Host "Current directory:"
+          Get-Location
+          Write-Host "Repo contents:"
+          dir
+          Write-Host "Scripts folder contents:"
+          dir .\scripts
+
       - name: Run PowerShell script
         shell: powershell
         run: |
-          .\scripts\hello.ps1
+         powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\hello.ps1
